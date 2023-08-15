@@ -1,3 +1,6 @@
+let playerScore = 0;
+let computerScore = 0;
+
 function getComputerChoice() {
   let choice = Math.floor(Math.random() * 3);
 	switch (choice) {
@@ -17,6 +20,7 @@ function playRound(playerSelection, computerSelection) {
 		case playerSelection === 'paper' && computerSelection === 'rock':
 		case playerSelection === 'scissor' && computerSelection === 'paper':
 			playerSelection = playerSelection.toUpperCase().slice(0,1) + playerSelection.slice(1);
+			playerScore++
 			return `You Win! ${playerSelection} beats ${computerSelection}.`;
 		case playerSelection === 'rock' && computerSelection === 'rock': 
 		case playerSelection === 'paper' && computerSelection === 'paper':
@@ -26,6 +30,26 @@ function playRound(playerSelection, computerSelection) {
 		case playerSelection === 'paper' && computerSelection === 'scissor':
 		case playerSelection === 'scissor' && computerSelection === 'rock':
 			computerSelection = computerSelection.slice(0,1).toUpperCase() + computerSelection.slice(1);
+			computerScore++
 			return `You Lose! ${computerSelection} beats ${playerSelection}.`;
 	}
 }
+
+function game() {
+	for (; playerScore < 3 && computerScore < 3;) {
+		let playerChoice = prompt('Rock, Paper, or Scissor? It is best out of 5!');
+		if (playerChoice === 'rock' || playerChoice === 'paper' || playerChoice === 'scissor') {
+			console.log(playRound(playerChoice, getComputerChoice()))
+		} else {
+			console.log('That is not an option! Please pick rock, paper, or scissor!')
+		}
+	}
+
+	if (playerScore <= 3) {
+		return 'Congrats!!! You won versus the Computer!'
+	} else {
+		return 'You Lose. You kind of suck!'
+	}
+}
+
+console.log(game())
