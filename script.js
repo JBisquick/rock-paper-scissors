@@ -41,12 +41,19 @@ function playRound(playerSelection, computerSelection) {
 	}
 };
 
+function checkWinner() {
+  if (playerScore >= 5 || computerScore >= 5) {
+    return true
+  } else {
+    return false
+  }
+};
+
 choices.forEach((playerChoice) => {
   playerChoice.addEventListener('click', () => {
     resultText = playRound(playerChoice.id, getComputerChoice());
     score.textContent = `You: ${playerScore} Champion: ${computerScore}`
     result.textContent = `${resultText}`
-
   });
 });
 
