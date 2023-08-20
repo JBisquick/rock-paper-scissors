@@ -2,11 +2,11 @@ let playerScore = 0;
 let computerScore = 0;
 
 const choices = document.querySelectorAll('button');
-const score = document.querySelector('.score');
-const result = document.querySelector('.result')
+const score = document.querySelector('#score');
+const result = document.querySelector('#result');
 
-const endText = document.createElement('div')
-const endButton = document.createElement('button')
+const endText = document.createElement('div');
+const endButton = document.createElement('button');
 
 
 
@@ -48,23 +48,23 @@ function playRound(playerSelection, computerSelection) {
 
 function checkWinner() {
   if (playerScore >= 5 || computerScore >= 5) {
-    return true
+    return true;
   } else {
-    return false
+    return false;
   }
 };
 
 function getWinner() {
   if (playerScore >= 5) {
-    endText.textContent = 'You Won';
+    endText.textContent = 'You Won!';
     endButton.textContent = 'Play Again';
   } else {
-    endText.textContent = 'You Lost';
+    endText.textContent = 'You Lost!';
     endButton.textContent = 'Try Again';
   }
   result.appendChild(endText);
-  result.appendChild(endButton)
-}
+  result.appendChild(endButton);
+};
 
 choices.forEach((playerChoice) => {
   playerChoice.addEventListener('click', () => {
@@ -76,6 +76,16 @@ choices.forEach((playerChoice) => {
   });
 });
 
+function resetGame() {
+  playerScore = 0;
+  computerScore = 0;
+  score.textContent = `You: 0 Champion: 0`;
+  result.textContent = `Lets go again!`;
+};
+
+endButton.addEventListener('click', () => {
+  resetGame();
+});
 
 
 
