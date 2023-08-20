@@ -87,6 +87,10 @@ choices.forEach((playerChoice) => {
     resultText = playRound(playerChoice.id, getComputerChoice());
     score.textContent = `You: ${playerScore} Champion: ${computerScore}`;
     result.textContent = `${resultText}`;
+
+    if (checkWinner() === true) {
+      return getWinner();
+    }
   });
 });
 
