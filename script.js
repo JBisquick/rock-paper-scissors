@@ -5,8 +5,8 @@ const choices = document.querySelectorAll('.choice');
 const score = document.querySelector('#score');
 const result = document.querySelector('#result');
 
-const endText = document.createElement('div');
 const endButton = document.createElement('button');
+endButton.setAttribute('id', 'play-again')
 
 const choiceArray = ['rock', 'paper', 'scissor'];
 function getComputerChoice() {
@@ -69,23 +69,24 @@ function checkWinner() {
 
 function getWinner() {
   if (playerScore >= 5) {
-    endText.textContent = 'You Won!';
+    result.textContent = 'Amazing! You were able to beat the champion?!?';
     endButton.textContent = 'Play Again';
   } else {
-    endText.textContent = 'You Lost!';
+    result.textContent = 'It\'s okay! They are the champion for a reason!';
     endButton.textContent = 'Try Again';
   }
-  result.appendChild(endText);
   result.appendChild(endButton);
 };
 
 choices.forEach((playerChoice) => {
   playerChoice.addEventListener('click', () => {
+    if (checkWinner() === true) {
+      return getWinner();
+    }
+
     resultText = playRound(playerChoice.id, getComputerChoice());
     score.textContent = `You: ${playerScore} Champion: ${computerScore}`;
     result.textContent = `${resultText}`;
-
-    if (checkWinner() === true) getWinner();
   });
 });
 
@@ -93,7 +94,7 @@ function resetGame() {
   playerScore = 0;
   computerScore = 0;
   score.textContent = `You: 0 Champion: 0`;
-  result.textContent = `Lets go again!`;
+  result.textContent = `Ready for another?`;
 };
 
 endButton.addEventListener('click', () => {
