@@ -22,6 +22,28 @@ function getComputerChoice() {
 	}
 };
 
+const loseArray = ['You lost, you kind of suck!', 'You can do better than that!',
+                  'That was trash!', 'The champ takes another round!', 
+                  'Aww man!', 'You haven\'t lost yet!'];
+
+function getWinPhrase() {
+  return winArray[Math.floor(Math.random() * winArray.length)];
+};
+
+const drawArray = ['Draw!', 'Tie!', 'Even round!']
+
+function getDrawPhrase() {
+  return drawArray[Math.floor(Math.random() * drawArray.length)];
+};
+
+const winArray = ['Wow! That was impressive!', 'You might be able to win this!',
+                   'I knew you could do this!', 'Don\'t get ahead of yourself', 
+                   'Didn\'t know you had that DAWG in you!', 'You won! Nice job!'];
+
+function getLosePhrase() {
+  return loseArray[Math.floor(Math.random() * loseArray.length)] ;
+};                   
+
 function playRound(playerSelection, computerSelection) {
 	playerSelection = playerSelection.toLowerCase()
 	switch (true) {
@@ -31,18 +53,18 @@ function playRound(playerSelection, computerSelection) {
 			playerSelection = playerSelection.toUpperCase().slice(0,1)
 							          + playerSelection.slice(1);
 			playerScore++;
-			return `You Win! ${playerSelection} beats ${computerSelection}.`;
+			return `${getWinPhrase()} ${playerSelection} beats ${computerSelection}.`;
 		case playerSelection === 'rock' && computerSelection === 'rock': 
 		case playerSelection === 'paper' && computerSelection === 'paper':
 		case playerSelection === 'scissor' && computerSelection === 'scissor':
-			return `Draw! Both chose ${playerSelection}.`
+			return `${getDrawPhrase()} Both chose ${playerSelection}.`
 		case playerSelection === 'rock' && computerSelection === 'paper':
 		case playerSelection === 'paper' && computerSelection === 'scissor':
 		case playerSelection === 'scissor' && computerSelection === 'rock':
 			computerSelection = computerSelection.slice(0,1).toUpperCase()
 						              + computerSelection.slice(1);
 			computerScore++;
-			return `You Lose! ${computerSelection} beats ${playerSelection}.`;
+			return `${getLosePhrase()} ${computerSelection} beats ${playerSelection}.`;
 	}
 };
 
