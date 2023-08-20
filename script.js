@@ -5,6 +5,11 @@ const choices = document.querySelectorAll('button');
 const score = document.querySelector('.score');
 const result = document.querySelector('.result')
 
+const endText = document.createElement('div')
+const endButton = document.createElement('button')
+
+
+
 function getComputerChoice() {
   let choice = Math.floor(Math.random() * 3);
 	switch (choice) {
@@ -49,11 +54,25 @@ function checkWinner() {
   }
 };
 
+function getWinner() {
+  if (playerScore >= 5) {
+    endText.textContent = 'You Won';
+    endButton.textContent = 'Play Again';
+  } else {
+    endText.textContent = 'You Lost';
+    endButton.textContent = 'Try Again';
+  }
+  result.appendChild(endText);
+  result.appendChild(endButton)
+}
+
 choices.forEach((playerChoice) => {
   playerChoice.addEventListener('click', () => {
     resultText = playRound(playerChoice.id, getComputerChoice());
-    score.textContent = `You: ${playerScore} Champion: ${computerScore}`
-    result.textContent = `${resultText}`
+    score.textContent = `You: ${playerScore} Champion: ${computerScore}`;
+    result.textContent = `${resultText}`;
+
+    if (checkWinner() === true) getWinner();
   });
 });
 
