@@ -1,25 +1,16 @@
 let playerScore = 0;
 let computerScore = 0;
 
-const choices = document.querySelectorAll('button');
+const choices = document.querySelectorAll('.choice');
 const score = document.querySelector('#score');
 const result = document.querySelector('#result');
 
 const endText = document.createElement('div');
 const endButton = document.createElement('button');
 
-
-
+const choiceArray = ['rock', 'paper', 'scissor'];
 function getComputerChoice() {
-  let choice = Math.floor(Math.random() * 3);
-	switch (choice) {
-		case 0:
-			return 'rock';
-		case 1: 
-			return 'paper';
-		case 2:
-			return 'scissor';
-	}
+  return choiceArray[Math.floor(Math.random() * choiceArray.length)];
 };
 
 const loseArray = ['You lost, you kind of suck!', 'You can do better than that!',
@@ -30,18 +21,18 @@ function getWinPhrase() {
   return winArray[Math.floor(Math.random() * winArray.length)];
 };
 
-const drawArray = ['Draw!', 'Tie!', 'Even round!']
+const drawArray = ['Draw!', 'Tie!', 'Even round!'];
 
 function getDrawPhrase() {
   return drawArray[Math.floor(Math.random() * drawArray.length)];
 };
 
 const winArray = ['Wow! That was impressive!', 'You might be able to win this!',
-                   'I knew you could do this!', 'Don\'t get ahead of yourself', 
+                   'I knew you could do this!', 'Don\'t get ahead of yourself!', 
                    'Didn\'t know you had that DAWG in you!', 'You won! Nice job!'];
 
 function getLosePhrase() {
-  return loseArray[Math.floor(Math.random() * loseArray.length)] ;
+  return loseArray[Math.floor(Math.random() * loseArray.length)];
 };                   
 
 function playRound(playerSelection, computerSelection) {
@@ -108,6 +99,3 @@ function resetGame() {
 endButton.addEventListener('click', () => {
   resetGame();
 });
-
-
-

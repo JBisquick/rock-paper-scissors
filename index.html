@@ -5,15 +5,28 @@
   <meta http-equiv='X-UA-Compatible' content='IE=edge'>
   <meta name='viewpor' content='width=device-width, initial-scale=1.0'>
   <script src='script.js' defer></script>
+  <link rel="stylesheet" href="./style.css">
   <title>Rock Paper Scissors</title>
 </head>
 <body>
-  <div>
-    <button id='rock'>Rock</button>
-    <button id='paper'>Paper</button>
-    <button id='scissor'>Scissors</button>
+  <div id="title">Rock Paper Scissors</div>
+  <div class="description">Are You Capable of Beating the Champion?</div>
+  <div class="description">First to 5 Wins...</div>
+  <div id="choice-container">
+    <div class='choice' id='rock'>
+      <img class='image' src="./images/rock.PNG">
+    </div>
+    <div class='choice' id='paper'>
+      <img class='image' src='./images/paper.png'>
+    </div>
+    <div class='choice' id='scissor'>
+      <img class='image' src='./images/scissors.png'>
+    </div>
   </div>
-  <div id="score">You: 0 Champion: 0</div>
+  <div id="score">
+    <div id="you-score">You: 0</div>
+    <div id="champ-score">Champion: 0</div>
+  </div>
   <div id="result">You got this!</div>
 </body>
 </html>
