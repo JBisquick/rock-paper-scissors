@@ -12,4 +12,4 @@ The interactive rock, paper, and scissors game was constructed using Javascript.
 
 # Lessons Learned: 
 
-I built this website using JavaScript for the first time. I gained knowledge on how to use functions, cases, if-else statements, math functions, DOM manipulation, and events.
+This was my first time building a website using JavaScript. I gained knowledge on how to use functions, cases, if-else statements, math functions, arrays, DOM manipulation, and events.
