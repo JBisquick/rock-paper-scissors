@@ -1,6 +1,6 @@
 # odin-rock-paper-scissors
 
-A website that allows you to play rock, paper, and scissors on your computer.
+A website that allows you to play rock, paper, and scissors against the computer.
 
 **Link to Project:** https://jbisquick.github.io/odin-rock-paper-scissors/
 
